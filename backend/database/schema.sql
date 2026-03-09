@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS MaintenanceRequest (
 
 INSERT IGNORE INTO Admin (name, email, password) VALUES
 ('System Admin', 'admin@rental.com', '$2b$10$examplehashedpassword1'),
-('Property Mgr', 'manager@rental.com', '$2b$10$examplehashedpassword2');
+
 
 INSERT IGNORE INTO Owner (name, email, phone, address) VALUES
 ('Raj Sharma', 'raj@gmail.com', '9876543210', 'Pune, Maharashtra'),
