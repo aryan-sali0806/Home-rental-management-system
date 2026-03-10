@@ -19,6 +19,7 @@ const Navbar = () => {
     { path: '/properties', label: 'Properties',  icon: '🏠' },
     { path: '/tenants',    label: 'Tenants',     icon: '🧑‍🤝‍🧑' },
     { path: '/leases',     label: 'Leases',      icon: '📄' },
+    { path: '/payments', label: 'Payments', icon: '💰' },
   ];
 
   return (

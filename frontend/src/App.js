@@ -6,6 +6,7 @@ import Owners from './pages/Owners';
 import Properties from './pages/Properties';
 import Tenants from './pages/Tenants';
 import Leases from './pages/Leases';
+import Payments from './pages/Payments';
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
@@ -26,6 +27,7 @@ function App() {
         <Route path="/tenants" element={<ProtectedRoute><Tenants /></ProtectedRoute>} />
         <Route path="/leases" element={<ProtectedRoute><Leases /></ProtectedRoute>} />
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/payments" element={<ProtectedRoute><Payments /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );

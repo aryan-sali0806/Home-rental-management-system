@@ -131,3 +131,27 @@ exports.remove = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getAll = async (req, res) => {
+  try {
+    // Auto expire leases whose end_date has passed
+    await db.query(`
+      UPDATE Lease 
+      SET lease_status = 'Completed' 
+      WHERE end_date < CURDATE() AND lease_status = 'Active'
+    `);
+
+    // Auto update property status
+    await db.query(`
+      UPDATE Property SET status = 'Available'
+      WHERE property_id NOT IN (
+        SELECT property_id FROM Lease WHERE lease_status = 'Active'
+      )
+    `);
+
+    const [rows] = await db.query('SELECT * FROM Lease');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
